@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="poster_item_content_desc">MoviePoster</string>
+
+    <!-- Main Activity Alert -->
+    <string-array name="filter_alert_options">
+        <item>Most Popular</item>
+        <item>Top Rated</item>
+    </string-array>
+    <string name="filter_alert_title">Select a filter</string>
+
+    <!-- Networking -->
+    <string name="message_server_error">Server could not be contacted</string>
+
+    <!-- JsonUtils Fallbacks -->
+    <string name="fallback_title">No Title Found</string>
+    <string name="fallback_poster_path">No Poster Found</string>
+    <string name="fallback_overview">No Description Found</string>
+    <string name="fallback_vote_average">No User Rating Found</string>
+    <string name="fallback_release_date">No Release Date Found</string>
+
+    <!-- Detail Activity -->
+    <string name="desc_release_date">Release Date:</string>
+    <string name="desc_user_rating">Average User Rating:</string>
+    <string name="desc_overview">Plot Summary:</string>
+</resources>
