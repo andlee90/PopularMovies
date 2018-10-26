@@ -6,13 +6,13 @@ import java.io.IOException;
 
 import static com.example.android.popularmovies.utilities.NetworkUtils.*;
 
-public class CollectMovieDataTask extends AsyncTask<Void, Void, String> {
+public class FetchMovieDataTask extends AsyncTask<Void, Void, String> {
 
     private AsyncResult mAsyncResult;
     private String mSortBy;
     private int mPageNum;
 
-    CollectMovieDataTask(AsyncResult mAsyncResult, String sortBy, int pageNum) {
+    FetchMovieDataTask(AsyncResult mAsyncResult, String sortBy, int pageNum) {
         this.mAsyncResult = mAsyncResult;
         this.mSortBy = sortBy;
         this.mPageNum = pageNum;

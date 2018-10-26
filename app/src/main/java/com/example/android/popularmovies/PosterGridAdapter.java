@@ -44,6 +44,7 @@ public class PosterGridAdapter extends RecyclerView.Adapter<PosterGridAdapter.Po
         //Picasso.get().setLoggingEnabled(true);
         Picasso.get().load(sBaseUrl + mMovies.get(position).getPosterPath())
                 .error(R.drawable.ic_error)
+                .placeholder(R.drawable.ic_placeholder)
                 .into(holder.getPosterImageView());
     }
 

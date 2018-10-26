@@ -31,4 +31,8 @@ public class Movies implements Serializable {
     public void clear() {
         this.movies.clear();
     }
+
+    public int getMovieCount() {
+        return movies.size();
+    }
 }
