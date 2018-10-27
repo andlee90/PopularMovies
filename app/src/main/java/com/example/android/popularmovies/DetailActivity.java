@@ -49,7 +49,7 @@ public class DetailActivity extends AppCompatActivity {
         ImageView iv = findViewById(R.id.iv_poster);
 
         Picasso.get().load(sBaseUrl + movie.getPosterPath())
-            .error(R.drawable.ic_error)
+            .error(R.drawable.ic_broken_image_black_12dp)
             .fit()
             .into(iv);
 

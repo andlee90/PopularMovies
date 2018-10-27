@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class JsonUtils {
 
     private static final String JSON_KEY_RESULTS = "results";
+    private static final String JSON_KEY_ID = "id";
     private static final String JSON_KEY_TITLE = "title";
     private static final String JSON_KEY_POSTER_PATH = "poster_path";
     private static final String JSON_KEY_OVERVIEW = "overview";
@@ -37,6 +38,7 @@ public class JsonUtils {
             for (int i = 0; i < jsonResults.length(); i++) {
                 JSONObject obj = jsonResults.optJSONObject(i);
                 Movie movie = new Movie(
+                    obj.optString(JSON_KEY_ID, mContext.getResources().getString(R.string.fallback_id)),
                     obj.optString(JSON_KEY_TITLE, mContext.getResources().getString(R.string.fallback_title)),
                     obj.optString(JSON_KEY_POSTER_PATH, mContext.getResources().getString(R.string.fallback_poster_path)),
                     obj.optString(JSON_KEY_OVERVIEW, mContext.getResources().getString(R.string.fallback_overview)),

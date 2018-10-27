@@ -13,6 +13,7 @@
     <string name="message_server_error">Server could not be contacted</string>
 
     <!-- JsonUtils Fallbacks -->
+    <string name="fallback_id">No ID Found</string>
     <string name="fallback_title">No Title Found</string>
     <string name="fallback_poster_path">No Poster Found</string>
     <string name="fallback_overview">No Description Found</string>

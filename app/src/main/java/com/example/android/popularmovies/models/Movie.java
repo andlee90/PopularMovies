@@ -6,15 +6,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Movie implements Serializable{
+public class Movie implements Serializable {
 
+    private String id;
     private String title;
     private String posterPath;
     private String overview;
     private String userRating;
     private String releaseDate;
 
-    public Movie(String title, String posterPath, String overview, String userRating, String releaseDate) {
+    public Movie(String id, String title, String posterPath, String overview, String userRating, String releaseDate) {
+        this.id = id;
         this.title = title;
         this.posterPath = posterPath;
         this.overview = overview;
@@ -22,6 +24,9 @@ public class Movie implements Serializable{
         this.releaseDate = formatDate(releaseDate);
     }
 
+    public String getId() {
+        return id;
+    }
     public String getTitle() {
         return title;
     }
