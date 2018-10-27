@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_release_date_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/desc_release_date"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_release_date_desc"
+        app:layout_constraintTop_toTopOf="@+id/tv_release_date_desc"
+        tools:text="Decemeber 12, 2006" />
+
+    <ImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_action_favorite_on" />
+
+    <TextView
+        android:id="@+id/tv_user_rating_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/desc_user_rating"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_release_date_desc"
+        app:layout_constraintTop_toBottomOf="@+id/tv_release_date_desc" />
+
+    <TextView
+        android:id="@+id/tv_user_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_user_rating_desc"
+        app:layout_constraintTop_toTopOf="@+id/tv_user_rating_desc"
+        tools:text="10/10" />
+
+    <TextView
+        android:id="@+id/tv_overview_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/desc_overview"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_release_date_desc"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_rating_desc" />
+
+    <TextView
+        android:id="@+id/tv_overview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_release_date_desc"
+        app:layout_constraintTop_toBottomOf="@+id/tv_overview_desc"
+        tools:text="Two monsters scare children to make ends meet." />
+
+</android.support.constraint.ConstraintLayout>

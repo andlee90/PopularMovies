@@ -61,9 +61,6 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FrameLayout mainFrame = findViewById(R.id.layout_main);
-        mainFrame.setBackgroundColor(getResources().getColor(R.color.colorBackground));
-
         mResponse = findViewById(R.id.tv_response);
         mProgressBar = findViewById(R.id.pb_loading);
         mRecyclerView = findViewById(R.id.rv_main);

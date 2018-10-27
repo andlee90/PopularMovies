@@ -26,58 +26,7 @@
         android:padding="10dp"
         android:layout_weight=".65">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <include layout="@layout/movie_details"/>
 
-            <TextView
-                android:id="@+id/tv_release_date_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                android:text="@string/desc_release_date"
-                android:textSize="12sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_release_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                android:textSize="12sp"/>
-
-            <TextView
-                android:id="@+id/tv_user_rating_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                android:text="@string/desc_user_rating"
-                android:textSize="12sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_user_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                android:textSize="12sp"/>
-
-            <TextView
-                android:id="@+id/tv_overview_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                android:text="@string/desc_overview"
-                android:textSize="12sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_overview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                android:textSize="12sp"/>
-        </LinearLayout>
     </ScrollView>
 </LinearLayout>

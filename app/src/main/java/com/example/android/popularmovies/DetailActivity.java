@@ -32,6 +32,23 @@ public class DetailActivity extends AppCompatActivity {
 
         mScrollView = findViewById(R.id.sv_detail);
         ImageView iv = findViewById(R.id.iv_poster);
+        final ImageView favoriteImageView = findViewById(R.id.iv_favorite);
+        favoriteImageView.setImageResource(R.drawable.ic_action_favorite_off);
+
+        favoriteImageView.setOnClickListener(new View.OnClickListener() {
+            boolean flag = false;
+            @Override
+            public void onClick(View v) {
+                if(flag) {
+                    favoriteImageView.setImageResource(R.drawable.ic_action_favorite_off);
+                    flag = false;
+                }
+                else {
+                    favoriteImageView.setImageResource(R.drawable.ic_action_favorite_on);
+                    flag = true;
+                }
+            }
+        });
 
         Picasso.get().load(sBaseUrl + movie.getPosterPath())
             .error(R.drawable.ic_broken_image_black_12dp)
