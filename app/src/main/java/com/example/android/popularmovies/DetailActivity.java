@@ -8,8 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -23,24 +21,11 @@ public class DetailActivity extends AppCompatActivity {
     public final static String sBaseUrl = "http://image.tmdb.org/t/p/w780/";
     private Menu mMenu;
     private ScrollView mScrollView;
-    private int mOrientation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mOrientation = getResources().getConfiguration().orientation;
-
-        if(mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_detail_landscape);
-            LinearLayout mainFrame = findViewById(R.id.layout_detail);
-            mainFrame.setBackgroundColor(getResources().getColor(R.color.colorBackground));
-        }
-        else {
-            setContentView(R.layout.activity_detail);
-            RelativeLayout mainFrame = findViewById(R.id.layout_detail);
-            mainFrame.setBackgroundColor(getResources().getColor(R.color.colorBackground));
-        }
+        setContentView(R.layout.activity_detail);
 
         Movie movie = (Movie) getIntent().getSerializableExtra(SELECTED_MOVIE);
         setTitle(movie.getTitle());
@@ -68,7 +53,7 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(mOrientation == Configuration.ORIENTATION_PORTRAIT) {
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             getMenuInflater().inflate(R.menu.detail, menu);
             mMenu = menu;
         }

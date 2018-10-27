@@ -40,7 +40,10 @@ captures/
 .idea/assetWizardSettings.xml
 .idea/dictionaries
 .idea/libraries
-.idea/caches
+.idea/caches/
+
+# DS_Store
+*.DS_Store
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
@@ -63,3 +66,9 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+app/.DS_Store
+app/libs/
+app/src/.DS_Store
+app/src/main/.DS_Store
+app/src/main/res/.DS_Store
+app/src/main/res/layout-land/
