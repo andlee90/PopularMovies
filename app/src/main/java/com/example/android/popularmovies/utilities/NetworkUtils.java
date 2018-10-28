@@ -19,7 +19,7 @@ public class NetworkUtils {
     private final static String sLanguage = "en-US";
 
     // TODO: Relocate/Remove API Key
-    private final static String sAPIKey = "";
+    private final static String sAPIKey = "d8430e3261062784080881e4e9c64d98";
 
     public final static String SORT_POPULAR = "popular";
     public final static String SORT_TOP_RATED = "top_rated";

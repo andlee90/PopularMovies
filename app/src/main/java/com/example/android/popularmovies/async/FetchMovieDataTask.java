@@ -1,4 +1,4 @@
-package com.example.android.popularmovies;
+package com.example.android.popularmovies.async;
 
 import android.os.AsyncTask;
 
@@ -12,7 +12,7 @@ public class FetchMovieDataTask extends AsyncTask<Void, Void, String> {
     private String mSortBy;
     private int mPageNum;
 
-    FetchMovieDataTask(AsyncResult mAsyncResult, String sortBy, int pageNum) {
+    public FetchMovieDataTask(AsyncResult mAsyncResult, String sortBy, int pageNum) {
         this.mAsyncResult = mAsyncResult;
         this.mSortBy = sortBy;
         this.mPageNum = pageNum;

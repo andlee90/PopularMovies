@@ -1,6 +1,9 @@
 package com.example.android.popularmovies;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.content.res.Configuration;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +14,13 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.android.popularmovies.async.AppExecutors;
+import com.example.android.popularmovies.database.AppDatabase;
+import com.example.android.popularmovies.database.FavoriteMovie;
 import com.example.android.popularmovies.models.Movie;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import static com.example.android.popularmovies.MainActivity.SELECTED_MOVIE;
 
@@ -21,51 +29,71 @@ public class DetailActivity extends AppCompatActivity {
     public final static String sBaseUrl = "http://image.tmdb.org/t/p/w780/";
     private Menu mMenu;
     private ScrollView mScrollView;
+    private ImageView mFavoriteImageView;
+    private boolean mIsFavorite;
+    private Movie mMovie;
+
+    private AppDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        Movie movie = (Movie) getIntent().getSerializableExtra(SELECTED_MOVIE);
-        setTitle(movie.getTitle());
+        mDb = AppDatabase.getInstance(getApplicationContext());
+        setUpUI();
+        checkIfFavorite();
+    }
+
+    private void setUpUI() {
+        mMovie = (Movie) getIntent().getSerializableExtra(SELECTED_MOVIE);
+        setTitle(mMovie.getTitle());
 
         mScrollView = findViewById(R.id.sv_detail);
         ImageView iv = findViewById(R.id.iv_poster);
-        final ImageView favoriteImageView = findViewById(R.id.iv_favorite);
-        favoriteImageView.setImageResource(R.drawable.ic_action_favorite_off);
+        mFavoriteImageView = findViewById(R.id.iv_favorite);
 
-        favoriteImageView.setOnClickListener(new View.OnClickListener() {
-            boolean flag = false;
+        mFavoriteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(flag) {
-                    favoriteImageView.setImageResource(R.drawable.ic_action_favorite_off);
-                    flag = false;
-                }
-                else {
-                    favoriteImageView.setImageResource(R.drawable.ic_action_favorite_on);
-                    flag = true;
-                }
+                onFavoriteButtonClicked();
             }
         });
 
-        Picasso.get().load(sBaseUrl + movie.getPosterPath())
-            .error(R.drawable.ic_broken_image_black_12dp)
-            .fit()
-            .into(iv);
+        Picasso.get().load(sBaseUrl + mMovie.getPosterPath())
+                .error(R.drawable.ic_broken_image_black_12dp)
+                .fit()
+                .into(iv);
 
         TextView releaseDateTextView = findViewById(R.id.tv_release_date);
-        String releaseDate = movie.getReleaseDate() + "\n";
+        String releaseDate = mMovie.getReleaseDate() + "\n";
         releaseDateTextView.setText(releaseDate);
 
         TextView userRatingTextView = findViewById(R.id.tv_user_rating);
-        String userRating = movie.getUserRating() + "/10\n";
+        String userRating = mMovie.getUserRating() + "/10\n";
         userRatingTextView.setText(userRating);
 
         TextView overviewTextView = findViewById(R.id.tv_overview);
-        String overview = movie.getOverview() + "\n";
+        String overview = mMovie.getOverview() + "\n";
         overviewTextView.setText(overview);
+    }
+
+    private void onFavoriteButtonClicked() {
+        if(mIsFavorite) {
+            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                @Override
+                public void run() {
+                    mDb.favoriteMovieDao().deleteFavoriteMovie(new FavoriteMovie(mMovie.getId(), mMovie.getTitle()));
+                }
+            });
+        } else {
+            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                @Override
+                public void run() {
+                    mDb.favoriteMovieDao().insertFavoriteMovie(new FavoriteMovie(mMovie.getId(), mMovie.getTitle()));
+                }
+            });
+        }
     }
 
     @Override
@@ -96,5 +124,26 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void checkIfFavorite() {
+        final LiveData<List<FavoriteMovie>> favoriteMovies = mDb.favoriteMovieDao().loadAllFavoriteMovies();
+        favoriteMovies.observe(this, new Observer<List<FavoriteMovie>>() {
+            @Override
+            public void onChanged(@Nullable List<FavoriteMovie> favoriteMovies) {
+                if(favoriteMovies != null){
+                    for(FavoriteMovie m: favoriteMovies) {
+                        if(m.getId().equals(mMovie.getId())) {
+                            mFavoriteImageView.setImageResource(R.drawable.ic_action_favorite_on);
+                            mIsFavorite = true;
+                            break;
+                        } else {
+                            mFavoriteImageView.setImageResource(R.drawable.ic_action_favorite_off);
+                            mIsFavorite = false;
+                        }
+                    }
+                }
+            }
+        });
     }
 }

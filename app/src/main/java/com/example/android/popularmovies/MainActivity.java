@@ -11,10 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.android.popularmovies.async.AsyncResult;
+import com.example.android.popularmovies.async.FetchMovieDataTask;
 import com.example.android.popularmovies.models.Movies;
 import com.example.android.popularmovies.utilities.JsonUtils;
 import com.example.android.popularmovies.utilities.SortUtils;

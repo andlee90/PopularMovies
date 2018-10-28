@@ -1,4 +1,4 @@
-package com.example.android.popularmovies;
+package com.example.android.popularmovies.async;
 /*
 I utilized HelmiB's answer from this StackOverflow question in order to arrive at the implementation
 of this interface:
