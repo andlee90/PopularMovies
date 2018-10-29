@@ -1,4 +1,4 @@
-package com.example.android.popularmovies;
+package com.example.android.popularmovies.activity_main;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,14 +9,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.models.Movie;
 import com.squareup.picasso.Picasso;
+
+import static com.example.android.popularmovies.constants.Constants.URL_BASE_IMAGE;
 
 import java.util.ArrayList;
 
 public class PosterGridAdapter extends RecyclerView.Adapter<PosterGridAdapter.PosterViewHolder> {
-
-    private final static String sBaseUrl = "http://image.tmdb.org/t/p/w342/";
 
     private ArrayList<Movie> mMovies;
     private LayoutInflater mInflater;
@@ -26,6 +27,30 @@ public class PosterGridAdapter extends RecyclerView.Adapter<PosterGridAdapter.Po
         this.mMovies = movies;
         this.mInflater = LayoutInflater.from(context);
         this.mOnClickListener = clickListener;
+    }
+
+    public void setMovies(ArrayList<Movie> movies) {
+        int currentSize = mMovies.size();
+        mMovies.clear();
+        mMovies.addAll(movies);
+        notifyItemRangeRemoved(0, currentSize);
+        notifyItemRangeInserted(0, movies.size());
+    }
+
+    public void addMovies(ArrayList<Movie> movies) {
+        int currentSize = mMovies.size();
+        mMovies.addAll(movies);
+        notifyItemRangeInserted(currentSize, 20);
+    }
+
+    public void clearMovies() {
+        int currentSize = mMovies.size();
+        mMovies.clear();
+        notifyItemRangeRemoved(0, currentSize);
+    }
+
+    public Movie getMovie(int id) {
+        return mMovies.get(id);
     }
 
     public interface GridItemClickListener {
@@ -42,7 +67,7 @@ public class PosterGridAdapter extends RecyclerView.Adapter<PosterGridAdapter.Po
     @Override
     public void onBindViewHolder(@NonNull PosterViewHolder holder, int position) {
         //Picasso.get().setLoggingEnabled(true);
-        Picasso.get().load(sBaseUrl + mMovies.get(position).getPosterPath())
+        Picasso.get().load(URL_BASE_IMAGE + mMovies.get(position).getPosterPath())
                 .error(R.drawable.ic_broken_image_black_12dp)
                 .noPlaceholder()
                 .into(holder.getPosterImageView());
@@ -51,10 +76,6 @@ public class PosterGridAdapter extends RecyclerView.Adapter<PosterGridAdapter.Po
     @Override
     public int getItemCount() {
         return mMovies.size();
-    }
-
-    Movie getItem(int id) {
-        return mMovies.get(id);
     }
 
     class PosterViewHolder extends RecyclerView.ViewHolder implements OnClickListener {

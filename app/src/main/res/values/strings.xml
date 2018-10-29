@@ -6,6 +6,7 @@
     <string-array name="filter_alert_options">
         <item>Most Popular</item>
         <item>Top Rated</item>
+        <item>Favorites</item>
     </string-array>
     <string name="filter_alert_title">Select a filter</string>
 

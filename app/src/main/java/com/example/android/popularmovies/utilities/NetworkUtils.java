@@ -1,7 +1,6 @@
 package com.example.android.popularmovies.utilities;
 
 import android.net.Uri;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,31 +9,25 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
+import static com.example.android.popularmovies.constants.Constants.KEY_API;
+import static com.example.android.popularmovies.constants.Constants.URL_BASE;
+import static com.example.android.popularmovies.constants.Constants.URL_LANG_ENG;
+import static com.example.android.popularmovies.constants.Constants.URL_PARAM_API_KEY;
+import static com.example.android.popularmovies.constants.Constants.URL_PARAM_LANGUAGE;
+import static com.example.android.popularmovies.constants.Constants.URL_PARAM_PAGE;
+
 public class NetworkUtils {
 
-    private final static String sBaseUrl = "https://api.themoviedb.org/3/movie/";
-    private final static String sParamAPIKey = "api_key";
-    private final static String sParamLanguage = "language";
-    private final static String sParamPage = "page";
-    private final static String sLanguage = "en-US";
-
-    // TODO: Relocate/Remove API Key
-    private final static String sAPIKey = "d8430e3261062784080881e4e9c64d98";
-
-    public final static String SORT_POPULAR = "popular";
-    public final static String SORT_TOP_RATED = "top_rated";
-
     public static URL buildUrl(String sortBy, int page) {
-        Uri builtUri = Uri.parse(sBaseUrl + sortBy).buildUpon()
-                .appendQueryParameter(sParamAPIKey, sAPIKey)
-                .appendQueryParameter(sParamLanguage, sLanguage)
-                .appendQueryParameter(sParamPage, Integer.toString(page))
+        Uri builtUri = Uri.parse(URL_BASE + sortBy).buildUpon()
+                .appendQueryParameter(URL_PARAM_API_KEY, KEY_API)
+                .appendQueryParameter(URL_PARAM_LANGUAGE, URL_LANG_ENG)
+                .appendQueryParameter(URL_PARAM_PAGE, Integer.toString(page))
                 .build();
 
         URL url = null;
         try {
             url = new URL(builtUri.toString());
-            //Log.d("url", url.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

@@ -5,12 +5,15 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.example.android.popularmovies.models.Movie;
 
-@Database(entities = {FavoriteMovie.class}, version = 1, exportSchema = false)
+import static com.example.android.popularmovies.constants.Constants.DB_NAME;
+
+@Database(entities = {Movie.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final Object LOCK = new Object();
-    private static final String DATABASE_NAME = "popularMovies";
+    private static final String DATABASE_NAME = DB_NAME;
     private static AppDatabase sInstance;
 
     public static AppDatabase getInstance(Context context) {
@@ -18,11 +21,12 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (LOCK) {
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME)
+                        .fallbackToDestructiveMigration()
                         .build();
             }
         }
         return sInstance;
     }
 
-    public abstract FavoriteMovieDao favoriteMovieDao();
+    public abstract MovieDao favoriteMovieDao();
 }
