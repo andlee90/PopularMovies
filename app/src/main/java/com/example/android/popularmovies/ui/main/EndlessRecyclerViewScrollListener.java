@@ -1,5 +1,6 @@
-package com.example.android.popularmovies.activity_main;
+package com.example.android.popularmovies.ui.main;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,18 +30,14 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
         int maxSize = 0;
 
         for (int i = 0; i < lastVisibleItemPositions.length; i++) {
-            if (i == 0) {
-                maxSize = lastVisibleItemPositions[i];
-            }
-            else if (lastVisibleItemPositions[i] > maxSize) {
-                maxSize = lastVisibleItemPositions[i];
-            }
+            if (i == 0) maxSize = lastVisibleItemPositions[i];
+            else if (lastVisibleItemPositions[i] > maxSize) maxSize = lastVisibleItemPositions[i];
         }
         return maxSize;
     }
 
     @Override
-    public void onScrolled(RecyclerView view, int dx, int dy) {
+    public void onScrolled(@NonNull RecyclerView view, int dx, int dy) {
         int lastVisibleItemPosition = 0;
         int totalItemCount = mLayoutManager.getItemCount();
 
@@ -58,9 +55,7 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
         if (totalItemCount < previousTotalItemCount) {
             this.currentPage = this.startingPageIndex;
             this.previousTotalItemCount = totalItemCount;
-            if (totalItemCount == 0) {
-                this.loading = true;
-            }
+            if (totalItemCount == 0) this.loading = true;
         }
 
         if (loading && (totalItemCount > previousTotalItemCount)) {

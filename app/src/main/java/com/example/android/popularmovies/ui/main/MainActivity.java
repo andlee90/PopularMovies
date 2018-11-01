@@ -1,4 +1,4 @@
-package com.example.android.popularmovies.activity_main;
+package com.example.android.popularmovies.ui.main;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -18,12 +18,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.android.popularmovies.R;
-import com.example.android.popularmovies.activity_detail.DetailActivity;
 import com.example.android.popularmovies.async.AppExecutors;
 import com.example.android.popularmovies.async.AsyncResult;
 import com.example.android.popularmovies.async.FetchMovieDataTask;
+import com.example.android.popularmovies.constants.Constants;
 import com.example.android.popularmovies.database.AppDatabase;
 import com.example.android.popularmovies.models.Movie;
+import com.example.android.popularmovies.ui.details.DetailActivity;
 import com.example.android.popularmovies.utilities.JsonUtils;
 import com.example.android.popularmovies.utilities.SortUtils;
 
@@ -34,6 +35,7 @@ import static com.example.android.popularmovies.constants.Constants.EXTRA_MOVIES
 import static com.example.android.popularmovies.constants.Constants.EXTRA_PAGE_NUM;
 import static com.example.android.popularmovies.constants.Constants.EXTRA_SELECTED_MOVIE;
 import static com.example.android.popularmovies.constants.Constants.EXTRA_SELECTED_SORT;
+import static com.example.android.popularmovies.utilities.NetworkUtils.buildDefaultUrl;
 
 public class MainActivity extends AppCompatActivity implements PosterGridAdapter.GridItemClickListener, AsyncResult {
 
@@ -138,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
         if(mSelectedSortValue == 2) {
             fetchFavoriteMovieData();
             setupUI(true, true);
+
         } else {
             mEndlessScrollListener.resetState();
             mPosterGridAdapter.clearMovies();
@@ -147,7 +150,8 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
     }
 
     private void fetchMovieData(String sort, int pageNum) {
-        new FetchMovieDataTask(this, sort, pageNum).execute();
+        new FetchMovieDataTask(this, buildDefaultUrl(sort, pageNum),
+                Constants.RESPONSE_MOVIES).execute();
     }
 
     private void fetchFavoriteMovieData() {
@@ -198,7 +202,6 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-
         switch (itemId) {
             case R.id.action_filter:
                 buildFilterDialog();

@@ -11,5 +11,4 @@
         android:contentDescription="@string/poster_item_content_desc"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"/>
-
 </FrameLayout>

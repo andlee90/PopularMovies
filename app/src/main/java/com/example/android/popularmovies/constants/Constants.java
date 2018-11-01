@@ -10,8 +10,12 @@ public class Constants {
     /**
      * URL COMPONENTS
      */
-    public final static String URL_BASE = "https://api.themoviedb.org/3/movie/";
-    public final static String URL_BASE_IMAGE = "http://image.tmdb.org/t/p/w342/";
+    public final static String URL_BASE_MOVIE_DB = "https://api.themoviedb.org/3/movie/";
+    public final static String URL_BASE_MOVIE_DB_IMAGE = "http://image.tmdb.org/t/p/w342/";
+    public final static String URL_BASE_MOVIE_DB_IMAGE_LARGE = "http://image.tmdb.org/t/p/w780/";
+    public final static String URL_BASE_YOUTUBE = "http://www.youtube.com/watch?v=";
+    public final static String URL_ENDPOINT_TRAILERS = "/videos";
+    public final static String URL_ENDPOINT_REVIEWS = "/reviews";
     public final static String URL_PARAM_API_KEY = "api_key";
     public final static String URL_PARAM_LANGUAGE = "language";
     public final static String URL_PARAM_PAGE = "page";
@@ -41,6 +45,13 @@ public class Constants {
     public static final String JSON_KEY_OVERVIEW = "overview";
     public static final String JSON_KEY_VOTE_AVERAGE = "vote_average";
     public static final String JSON_KEY_RELEASE_DATE = "release_date";
+    public static final String JSON_KEY_KEY = "key";
+    public static final String JSON_KEY_NAME = "name";
+    public static final String JSON_KEY_SITE = "site";
+    public static final String JSON_KEY_SIZE = "size";
+    public static final String JSON_KEY_TYPE = "type";
+    public static final String JSON_KEY_AUTHOR = "author";
+    public static final String JSON_KEY_CONTENT = "content";
 
     /**
      * INTENT TAGS
@@ -49,4 +60,16 @@ public class Constants {
     public static final String EXTRA_SELECTED_MOVIE = "EXTRA_SELECTED_MOVIE";
     public static final String EXTRA_MOVIES = "EXTRA_MOVIES";
     public static final String EXTRA_PAGE_NUM = "EXTRA_PAGE_NUM";
+
+    /**
+     * ARG BUNDLE TAGS
+     */
+    public static final String ARG_MOVIE = "ARG_MOVIE";
+
+    /**
+     * RESPONSE TAGS
+     */
+    public static final String RESPONSE_MOVIES = "MOV ";
+    public static final String RESPONSE_REVIEWS = "REV ";
+    public static final String RESPONSE_TRAILERS = "TRA ";
 }

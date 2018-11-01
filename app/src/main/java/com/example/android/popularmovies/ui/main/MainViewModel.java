@@ -1,4 +1,4 @@
-package com.example.android.popularmovies.activity_main;
+package com.example.android.popularmovies.ui.main;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

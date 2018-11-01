@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 import static com.example.android.popularmovies.constants.Constants.KEY_API;
-import static com.example.android.popularmovies.constants.Constants.URL_BASE;
+import static com.example.android.popularmovies.constants.Constants.URL_BASE_MOVIE_DB;
 import static com.example.android.popularmovies.constants.Constants.URL_LANG_ENG;
 import static com.example.android.popularmovies.constants.Constants.URL_PARAM_API_KEY;
 import static com.example.android.popularmovies.constants.Constants.URL_PARAM_LANGUAGE;
@@ -18,11 +18,27 @@ import static com.example.android.popularmovies.constants.Constants.URL_PARAM_PA
 
 public class NetworkUtils {
 
-    public static URL buildUrl(String sortBy, int page) {
-        Uri builtUri = Uri.parse(URL_BASE + sortBy).buildUpon()
+    public static URL buildDefaultUrl(String sortBy, int page) {
+        Uri builtUri = Uri.parse(URL_BASE_MOVIE_DB + sortBy).buildUpon()
                 .appendQueryParameter(URL_PARAM_API_KEY, KEY_API)
                 .appendQueryParameter(URL_PARAM_LANGUAGE, URL_LANG_ENG)
                 .appendQueryParameter(URL_PARAM_PAGE, Integer.toString(page))
+                .build();
+
+        URL url = null;
+        try {
+            url = new URL(builtUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return url;
+    }
+
+    public static URL buildUrlById(String movieId, String endpoint) {
+        Uri builtUri = Uri.parse(URL_BASE_MOVIE_DB + movieId + endpoint).buildUpon()
+                .appendQueryParameter(URL_PARAM_API_KEY, KEY_API)
+                .appendQueryParameter(URL_PARAM_LANGUAGE, URL_LANG_ENG)
                 .build();
 
         URL url = null;

@@ -1,4 +1,4 @@
-package com.example.android.popularmovies.activity_main;
+package com.example.android.popularmovies.ui.main;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.models.Movie;
 import com.squareup.picasso.Picasso;
 
-import static com.example.android.popularmovies.constants.Constants.URL_BASE_IMAGE;
+import static com.example.android.popularmovies.constants.Constants.URL_BASE_MOVIE_DB_IMAGE;
 
 import java.util.ArrayList;
 
@@ -67,8 +67,8 @@ public class PosterGridAdapter extends RecyclerView.Adapter<PosterGridAdapter.Po
     @Override
     public void onBindViewHolder(@NonNull PosterViewHolder holder, int position) {
         //Picasso.get().setLoggingEnabled(true);
-        Picasso.get().load(URL_BASE_IMAGE + mMovies.get(position).getPosterPath())
-                .error(R.drawable.ic_broken_image_black_12dp)
+        Picasso.get().load(URL_BASE_MOVIE_DB_IMAGE + mMovies.get(position).getPosterPath())
+                .error(R.drawable.ic_display_broken_image)
                 .noPlaceholder()
                 .into(holder.getPosterImageView());
     }

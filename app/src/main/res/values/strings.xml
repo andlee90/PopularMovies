@@ -2,27 +2,41 @@
     <string name="app_name">Popular Movies</string>
     <string name="poster_item_content_desc">MoviePoster</string>
 
-    <!-- Main Activity Alert -->
+    <!-- Main -->
     <string-array name="filter_alert_options">
         <item>Most Popular</item>
         <item>Top Rated</item>
         <item>Favorites</item>
     </string-array>
     <string name="filter_alert_title">Select a filter</string>
+    <string name="empty_text_movies">No Movies to Display</string>
 
     <!-- Networking -->
     <string name="message_server_error">Server could not be contacted</string>
 
     <!-- JsonUtils Fallbacks -->
-    <string name="fallback_id">No ID Found</string>
-    <string name="fallback_title">No Title Found</string>
-    <string name="fallback_poster_path">No Poster Found</string>
-    <string name="fallback_overview">No Description Found</string>
-    <string name="fallback_vote_average">No User Rating Found</string>
-    <string name="fallback_release_date">No Release Date Found</string>
+    <string name="fallback_id">No ID Available</string>
+    <string name="fallback_title">No Title Available</string>
+    <string name="fallback_poster_path">No Poster Available</string>
+    <string name="fallback_overview">No Description Available</string>
+    <string name="fallback_vote_average">No User Rating Available</string>
+    <string name="fallback_release_date">No Release Available</string>
+    <string name="fallback_key">No Key Available</string>
+    <string name="fallback_name">No Name Available</string>
+    <string name="fallback_site">No Site Available</string>
+    <string name="fallback_size">No Size Available</string>
+    <string name="fallback_type">No Type Available</string>
+    <string name="fallback_author">No Author Available</string>
+    <string name="fallback_content">No Content Available</string>
 
-    <!-- Detail Activity -->
-    <string name="desc_release_date">Release Date:</string>
-    <string name="desc_user_rating">Average User Rating:</string>
-    <string name="desc_overview">Plot Summary:</string>
+    <!-- Details -->
+    <string name="desc_release_date">Released</string>
+    <string name="desc_user_rating">Average User Rating</string>
+    <string name="desc_overview">Plot Summary</string>
+    <string name="tab_overview">Overview</string>
+    <string name="tab_reviews">Reviews</string>
+    <string name="tab_trailers">Trailers</string>
+    <string name="empty_text_reviews">No Reviews Available</string>
+    <string name="empty_text_trailers">No Trailers Available</string>
+    <string name="intent_chooser_title">Select an Application</string>
 </resources>

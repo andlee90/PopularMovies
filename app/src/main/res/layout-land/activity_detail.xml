@@ -4,7 +4,7 @@
     android:id="@+id/layout_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_detail.DetailActivity"
+    tools:context=".ui.details.DetailActivity"
     android:orientation="horizontal"
     android:weightSum="1"
     android:background="@color/colorBackground">
@@ -17,16 +17,15 @@
         android:padding="10dp"
         android:contentDescription="@string/poster_item_content_desc"/>
 
-    <ScrollView
-        android:id="@+id/sv_detail"
+    <FrameLayout
+        android:id="@+id/fl_details"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_view_background"
+        android:background="@drawable/detail_view_border"
         android:layout_margin="10dp"
         android:padding="10dp"
         android:layout_weight=".65">
 
-        <include layout="@layout/movie_details"/>
-
-    </ScrollView>
+        <include layout="@layout/viewpager_detail"/>
+    </FrameLayout>
 </LinearLayout>
