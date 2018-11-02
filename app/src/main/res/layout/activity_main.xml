@@ -14,16 +14,45 @@
         android:layout_gravity="center"
         android:visibility="invisible"/>
 
+    <LinearLayout
+        android:id="@+id/tv_check_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorText"
+            android:text="@string/error_text_no_connection"/>
+
+        <Button
+            android:id="@+id/btn_view_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:padding="6dp"
+            android:paddingRight="12dp"
+            android:paddingLeft="12dp"
+            android:textColor="@color/colorText"
+            android:background="@color/colorAccent"
+            android:text="@string/button_view_favorites"/>
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/tv_response"
+        android:id="@+id/tv_no_favorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/colorText"
-        android:text="@string/message_server_error"
+        android:text="@string/empty_text_favorites"
         android:visibility="invisible"/>
 
-    <android.support.v7.widget.RecyclerView
+    <com.example.android.popularmovies.ui.main.EmptySafeRecyclerView
         android:id="@+id/rv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

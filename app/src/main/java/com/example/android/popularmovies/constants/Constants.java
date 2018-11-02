@@ -5,7 +5,7 @@ public class Constants {
     /**
      * API_KEY --- ADD API KEY HERE
      */
-    public final static String KEY_API = "";
+    public final static String KEY_API = "d8430e3261062784080881e4e9c64d98";
 
     /**
      * URL COMPONENTS

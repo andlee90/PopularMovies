@@ -1,6 +1,6 @@
 <resources>
+    <!-- App -->
     <string name="app_name">Popular Movies</string>
-    <string name="poster_item_content_desc">MoviePoster</string>
 
     <!-- Main -->
     <string-array name="filter_alert_options">
@@ -8,11 +8,11 @@
         <item>Top Rated</item>
         <item>Favorites</item>
     </string-array>
-    <string name="filter_alert_title">Select a filter</string>
-    <string name="empty_text_movies">No Movies to Display</string>
 
-    <!-- Networking -->
-    <string name="message_server_error">Server could not be contacted</string>
+    <string name="filter_alert_title">Select a filter</string>
+    <string name="empty_text_favorites">No favorites selected</string>
+    <string name="error_text_no_connection">Network connection currently unavailable</string>
+    <string name="button_view_favorites">View favorites</string>
 
     <!-- JsonUtils Fallbacks -->
     <string name="fallback_id">No ID Available</string>
@@ -39,4 +39,7 @@
     <string name="empty_text_reviews">No Reviews Available</string>
     <string name="empty_text_trailers">No Trailers Available</string>
     <string name="intent_chooser_title">Select an Application</string>
+
+    <!-- Content Descriptions -->
+    <string name="poster_item_content_desc">MoviePoster</string>
 </resources>

@@ -77,7 +77,7 @@ public class TrailersFragment extends ListFragment implements AsyncResult, Adapt
     public void onTaskFinish(String output) {
         mTrailers = mJsonUtils.parseTrailersFromJson(output);
 
-        if(mTrailers.isEmpty()) {
+        if(mTrailers == null || mTrailers.isEmpty()) {
             mProgressBar.setVisibility(View.INVISIBLE);
             mTextView.setVisibility(View.VISIBLE);
 

@@ -25,6 +25,8 @@ public class JsonUtils {
 
     public ArrayList<Movie> parseMoviesFromJson(String json) {
 
+        if(json == null) return null;
+
         ArrayList<Movie> movies = new ArrayList<>();
 
         try {
@@ -54,6 +56,8 @@ public class JsonUtils {
 
     public ArrayList<Review> parseReviewsFromJson(String json) {
 
+        if(json == null) return null;
+
         ArrayList<Review> reviews = new ArrayList<>();
 
         try {
@@ -79,6 +83,7 @@ public class JsonUtils {
 
     public ArrayList<Trailer> parseTrailersFromJson(String json) {
 
+        if(json == null) return null;
         ArrayList<Trailer> trailers = new ArrayList<>();
 
         try {

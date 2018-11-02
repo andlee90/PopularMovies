@@ -73,7 +73,7 @@ public class ReviewsFragment extends ListFragment implements AsyncResult {
     public void onTaskFinish(String output) {
         final ArrayList<Review> reviews = mJsonUtils.parseReviewsFromJson(output);
 
-        if(reviews.isEmpty()) {
+        if(reviews == null || reviews.isEmpty()) {
             mProgressBar.setVisibility(View.INVISIBLE);
             mTextView.setVisibility(View.VISIBLE);
 

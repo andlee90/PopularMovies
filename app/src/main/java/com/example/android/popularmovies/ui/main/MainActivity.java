@@ -14,6 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -37,14 +39,16 @@ import static com.example.android.popularmovies.constants.Constants.EXTRA_SELECT
 import static com.example.android.popularmovies.constants.Constants.EXTRA_SELECTED_SORT;
 import static com.example.android.popularmovies.utilities.NetworkUtils.buildDefaultUrl;
 
-public class MainActivity extends AppCompatActivity implements PosterGridAdapter.GridItemClickListener, AsyncResult {
+public class MainActivity extends AppCompatActivity implements PosterGridAdapter.GridItemClickListener, AsyncResult, Button.OnClickListener {
 
     private int mSelectedSortValue;
     private int mPageNum;
     private ArrayList<Movie> mMovies;
     private ProgressBar mProgressBar;
-    private TextView mResponse;
-    private RecyclerView mRecyclerView;
+    private LinearLayout mResponse;
+    private TextView mEmpty;
+    private Button mViewFavoritesButton;
+    private EmptySafeRecyclerView mRecyclerView;
     private PosterGridAdapter mPosterGridAdapter;
     private EndlessRecyclerViewScrollListener mEndlessScrollListener;
     private AlertDialog mFilterSelectionAlertDialog;
@@ -77,9 +81,12 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
 
         mDb = AppDatabase.getInstance(getApplicationContext());
 
-        mResponse = findViewById(R.id.tv_response);
+        mResponse = findViewById(R.id.tv_check_connection);
         mProgressBar = findViewById(R.id.pb_loading);
         mRecyclerView = findViewById(R.id.rv_main);
+        mEmpty = findViewById(R.id.tv_no_favorites);
+        mViewFavoritesButton = findViewById(R.id.btn_view_favorites);
+        mViewFavoritesButton.setOnClickListener(this);
 
         int orientation = getResources().getConfiguration().orientation;
         int spanCount = orientation == Configuration.ORIENTATION_LANDSCAPE ? 5 : 3;
@@ -87,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, spanCount);
 
         mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setEmptyView(mResponse);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         mEndlessScrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager) {
 
@@ -103,14 +111,13 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
             mSelectedSortValue = savedInstanceState.getInt(EXTRA_SELECTED_SORT);
             mMovies = savedInstanceState.getParcelableArrayList(EXTRA_MOVIES);
             mPageNum = savedInstanceState.getInt(EXTRA_PAGE_NUM);
-            setupUI(true, true);
 
         } else {
             mSelectedSortValue = 0;
             mPageNum = 1;
             mMovies = new ArrayList<>();
             fetchMovieData(SortUtils.getApiValue(mSelectedSortValue), mPageNum);
-            setupUI(false, false);
+            mRecyclerView.setEmptyView(mProgressBar);
         }
 
         mPosterGridAdapter = new PosterGridAdapter(this, mMovies, this);
@@ -118,34 +125,16 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
         setupViewModel();
     }
 
-    private void setupUI(boolean loadFinished, boolean hasResults) {
-        if(!loadFinished && !hasResults) {
-            mProgressBar.setVisibility(View.VISIBLE);
-            mResponse.setVisibility(View.INVISIBLE);
-            mRecyclerView.setVisibility(View.INVISIBLE);
-
-        } else if(loadFinished && !hasResults) {
-            mProgressBar.setVisibility(View.INVISIBLE);
-            mResponse.setVisibility(View.VISIBLE);
-            mRecyclerView.setVisibility(View.INVISIBLE);
-
-        } else {
-            mProgressBar.setVisibility(View.INVISIBLE);
-            mResponse.setVisibility(View.INVISIBLE);
-            mRecyclerView.setVisibility(View.VISIBLE);
-        }
-    }
-
     private void resetUI() {
         if(mSelectedSortValue == 2) {
             fetchFavoriteMovieData();
-            setupUI(true, true);
+            mRecyclerView.setEmptyView(mEmpty);
 
         } else {
             mEndlessScrollListener.resetState();
             mPosterGridAdapter.clearMovies();
             fetchMovieData(SortUtils.getApiValue(mSelectedSortValue), mPageNum = 1);
-            setupUI(false, false);
+            mRecyclerView.setEmptyView(mProgressBar);
         }
     }
 
@@ -168,11 +157,10 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
     public void onTaskFinish(String output) {
         if (output != null) {
             mPosterGridAdapter.addMovies(mJsonUtils.parseMoviesFromJson(output));
-            setupUI(true, true);
 
         } else {
             // No response from server, notify user
-            setupUI(true, false);
+            mRecyclerView.setEmptyView(mResponse);
         }
     }
 
@@ -188,7 +176,9 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
         viewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
-                if(mSelectedSortValue == 2) mPosterGridAdapter.setMovies((ArrayList<Movie>)movies);
+                if(mSelectedSortValue == 2) {
+                    mPosterGridAdapter.setMovies((ArrayList<Movie>)movies);
+                }
             }
         });
     }
@@ -234,5 +224,13 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
         });
         mFilterSelectionAlertDialog = builder.create();
         mFilterSelectionAlertDialog.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == mViewFavoritesButton) {
+            mSelectedSortValue = 2;
+            resetUI();
+        }
     }
 }
