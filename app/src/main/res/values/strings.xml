@@ -41,5 +41,7 @@
     <string name="intent_chooser_title">Select an Application</string>
 
     <!-- Content Descriptions -->
-    <string name="poster_item_content_desc">MoviePoster</string>
+    <string name="poster_item_content_desc">Movie Poster</string>
+    <string name="review_item_content_desc">Movie Review</string>
+
 </resources>
