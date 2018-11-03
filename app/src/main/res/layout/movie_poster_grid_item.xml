@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="2dp"
-        android:contentDescription="@string/poster_item_content_desc"
+        android:contentDescription="@string/movie_poster_image_content_desc"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"/>
 </FrameLayout>

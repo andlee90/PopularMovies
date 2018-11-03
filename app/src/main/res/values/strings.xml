@@ -13,6 +13,7 @@
     <string name="empty_text_favorites">No favorites selected</string>
     <string name="error_text_no_connection">Network connection currently unavailable</string>
     <string name="button_view_favorites">View favorites</string>
+    <string name="button_details_visibility_title">Details Visibility</string>
 
     <!-- JsonUtils Fallbacks -->
     <string name="fallback_id">No ID Available</string>
@@ -38,10 +39,13 @@
     <string name="tab_trailers">Trailers</string>
     <string name="empty_text_reviews">No Reviews Available</string>
     <string name="empty_text_trailers">No Trailers Available</string>
-    <string name="intent_chooser_title">Select an Application</string>
+    <string name="play_intent_chooser_title">Play Using</string>
+    <string name="share_intent_chooser_title">Share Using</string>
 
     <!-- Content Descriptions -->
-    <string name="poster_item_content_desc">Movie Poster</string>
-    <string name="review_item_content_desc">Movie Review</string>
+    <string name="movie_poster_image_content_desc">Movie Poster</string>
+    <string name="review_author_icon_content_desc">Movie Review Author</string>
+    <string name="play_trailer_icon_content_desc">Play Trailer</string>
+    <string name="share_trailer_icon_content_desc">Share Trailer</string>
 
 </resources>

@@ -16,7 +16,7 @@
         android:layout_marginRight="12dp"
         android:layout_marginEnd="12dp"
         android:src="@drawable/ic_display_author"
-        android:contentDescription="@string/review_item_content_desc" />
+        android:contentDescription="@string/review_author_icon_content_desc" />
 
     <TextView
         android:id="@+id/tv_author"

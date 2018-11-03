@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:layout_weight=".35"
         android:padding="10dp"
-        android:contentDescription="@string/poster_item_content_desc"/>
+        android:contentDescription="@string/movie_poster_image_content_desc"/>
 
     <FrameLayout
         android:id="@+id/fl_details"

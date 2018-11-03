@@ -1,7 +1,5 @@
 package com.example.android.popularmovies.ui.details.trailers;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +7,6 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,10 +23,9 @@ import java.util.ArrayList;
 import static com.example.android.popularmovies.constants.Constants.ARG_MOVIE;
 import static com.example.android.popularmovies.utilities.NetworkUtils.buildUrlById;
 
-public class TrailersFragment extends ListFragment implements AsyncResult, AdapterView.OnItemClickListener {
+public class TrailersFragment extends ListFragment implements AsyncResult {
 
     private Movie mMovie;
-    private ArrayList<Trailer> mTrailers;
     private JsonUtils mJsonUtils;
 
     private ProgressBar mProgressBar;
@@ -75,27 +71,15 @@ public class TrailersFragment extends ListFragment implements AsyncResult, Adapt
 
     @Override
     public void onTaskFinish(String output) {
-        mTrailers = mJsonUtils.parseTrailersFromJson(output);
+        ArrayList<Trailer> trailers = mJsonUtils.parseTrailersFromJson(output);
 
-        if(mTrailers == null || mTrailers.isEmpty()) {
+        if(trailers == null || trailers.isEmpty()) {
             mProgressBar.setVisibility(View.INVISIBLE);
             mTextView.setVisibility(View.VISIBLE);
 
         } else {
-            TrailerListAdapter trailerListAdapter = new TrailerListAdapter(mTrailers, getActivity());
+            TrailerListAdapter trailerListAdapter = new TrailerListAdapter(trailers, getActivity());
             setListAdapter(trailerListAdapter);
-            getListView().setOnItemClickListener(this);
         }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Trailer trailer = mTrailers.get(position);
-
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.URL_BASE_YOUTUBE
-                + trailer.getKey()));
-
-        Intent chooser = Intent.createChooser(intent, getString(R.string.intent_chooser_title));
-        startActivity(chooser);
     }
 }

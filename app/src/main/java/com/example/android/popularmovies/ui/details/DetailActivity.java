@@ -115,11 +115,11 @@ public class DetailActivity extends AppCompatActivity {
         switch (itemId) {
             case R.id.action_visibility:
                 if(mDetailsFrame.getVisibility() == View.VISIBLE) {
-                    mMenu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_visibility_off));
+                    mMenu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_action_invisible));
                     mDetailsFrame.setVisibility(View.INVISIBLE);
 
                 } else {
-                    mMenu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_visibility));
+                    mMenu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_action_visible));
                     mDetailsFrame.setVisibility(View.VISIBLE);
                 }
 

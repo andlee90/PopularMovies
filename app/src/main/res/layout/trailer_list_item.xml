@@ -5,46 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="60dp">
 
-    <ImageView
-        android:id="@+id/iv_play"
+    <RelativeLayout
+        android:id="@+id/rv_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/iv_share"
+        android:layout_toStartOf="@+id/iv_share"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_action_play" />
+        android:layout_marginLeft="10dp">
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/tv_site"
-        android:layout_toStartOf="@+id/tv_site"
-        android:layout_toEndOf="@+id/iv_play"
-        android:layout_toRightOf="@+id/iv_play"
-        android:paddingLeft="12dp"
-        android:paddingStart="12dp"
-        android:paddingRight="12dp"
-        android:paddingEnd="12dp"
-        android:layout_centerVertical="true"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textColor="@color/colorText"
-        tools:text="trailer" />
+        <ImageView
+            android:id="@+id/iv_play"
+            android:contentDescription="@string/play_trailer_icon_content_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_action_play" />
 
-    <TextView
-        android:id="@+id/tv_site"
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_play"
+            android:layout_toRightOf="@+id/iv_play"
+            android:paddingLeft="12dp"
+            android:paddingStart="12dp"
+            android:paddingRight="12dp"
+            android:paddingEnd="12dp"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/colorText"
+            tools:text="trailer" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_share"
+        android:contentDescription="@string/share_trailer_icon_content_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:ellipsize="end"
-        android:textColor="@color/colorAccent"
-        android:textAllCaps="true"
-        tools:text="site" />
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_action_share"/>
 </RelativeLayout>
