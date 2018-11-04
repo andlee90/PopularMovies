@@ -10,20 +10,20 @@
     android:background="@color/colorBackground">
 
     <ImageView
-        android:id="@+id/iv_poster"
+        android:id="@+id/iv_movie_poster"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight=".35"
-        android:padding="10dp"
+        android:padding="@dimen/standard_padding"
         android:contentDescription="@string/movie_poster_image_content_desc"/>
 
     <FrameLayout
-        android:id="@+id/fl_details"
+        android:id="@+id/fl_details_display"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@drawable/detail_view_border"
-        android:layout_margin="10dp"
-        android:padding="10dp"
+        android:layout_margin="@dimen/standard_padding"
+        android:padding="@dimen/standard_padding"
         android:layout_weight=".65">
 
         <include layout="@layout/viewpager_detail"/>

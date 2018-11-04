@@ -31,8 +31,6 @@ public class ReviewListAdapter  extends ArrayAdapter<Review> {
         Review review = getItem(position);
         ViewHolder viewHolder;
 
-        final View result;
-
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -40,12 +38,10 @@ public class ReviewListAdapter  extends ArrayAdapter<Review> {
             viewHolder.authorTextView = convertView.findViewById(R.id.tv_author);
             viewHolder.contentTextView = convertView.findViewById(R.id.tv_content);
 
-            result = convertView;
             convertView.setTag(viewHolder);
 
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-            result = convertView;
         }
 
         if(review != null) {
@@ -53,6 +49,6 @@ public class ReviewListAdapter  extends ArrayAdapter<Review> {
             viewHolder.contentTextView.setText(review.getContent());
         }
 
-        return result;
+        return convertView;
     }
 }

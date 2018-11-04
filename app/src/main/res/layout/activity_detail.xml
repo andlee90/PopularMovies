@@ -8,19 +8,19 @@
     tools:context=".ui.details.DetailActivity">
 
     <ImageView
-        android:id="@+id/iv_poster"
+        android:id="@+id/iv_movie_poster"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/movie_poster_image_content_desc"/>
 
     <FrameLayout
-        android:id="@+id/fl_details"
+        android:id="@+id/fl_details_display"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="@dimen/detail_frame_height"
         android:layout_alignParentBottom="true"
         android:background="@drawable/detail_view_border"
-        android:layout_margin="10dp"
-        android:padding="10dp">
+        android:layout_margin="@dimen/standard_padding"
+        android:padding="@dimen/standard_padding">
 
         <include layout="@layout/viewpager_detail"/>
     </FrameLayout>

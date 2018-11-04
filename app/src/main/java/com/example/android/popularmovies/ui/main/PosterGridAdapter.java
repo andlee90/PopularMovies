@@ -67,10 +67,12 @@ public class PosterGridAdapter extends RecyclerView.Adapter<PosterGridAdapter.Po
     @Override
     public void onBindViewHolder(@NonNull PosterViewHolder holder, int position) {
         //Picasso.get().setLoggingEnabled(true);
-        Picasso.get().load(URL_BASE_MOVIE_DB_IMAGE + mMovies.get(position).getPosterPath())
-                .error(R.drawable.ic_display_broken_image)
-                .noPlaceholder()
-                .into(holder.getPosterImageView());
+        if(mMovies.get(position).getPosterPath() != null) {
+            Picasso.get().load(URL_BASE_MOVIE_DB_IMAGE + mMovies.get(position).getPosterPath())
+                    .error(R.drawable.ic_display_broken_image)
+                    .noPlaceholder()
+                    .into(holder.getPosterImageView());
+        }
     }
 
     @Override

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,7 +25,7 @@ public class TrailerListAdapter  extends ArrayAdapter<Trailer> implements View.O
 
     private static class ViewHolder {
         TextView nameTextView;
-        ImageView shareImageView;
+        ImageButton shareImageView;
         RelativeLayout playRelativeLayout;
     }
 

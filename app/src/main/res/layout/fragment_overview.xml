@@ -6,7 +6,7 @@
     android:id="@+id/sv_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp">
+    android:paddingTop="@dimen/detail_padding_top">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="@string/desc_release_date"
             android:textColor="@color/colorText"
-            android:textSize="14sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,108 +27,95 @@
             android:id="@+id/tv_release_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/detail_view_margin"
+            android:layout_marginStart="@dimen/detail_view_margin"
             android:textColor="@color/colorText"
-            android:textSize="14sp"
+            android:textSize="@dimen/standard_text_size"
             app:layout_constraintStart_toEndOf="@+id/tv_release_date_desc"
             app:layout_constraintTop_toTopOf="@+id/tv_release_date_desc"
-            tools:text="Decemeber 12, 2006" />
+            tools:text="December 12, 2006" />
 
         <TextView
             android:id="@+id/tv_user_rating_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/detail_view_margin"
             android:text="@string/desc_user_rating"
             android:textColor="@color/colorText"
-            android:textSize="14sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_release_date_desc"
             app:layout_constraintTop_toBottomOf="@+id/tv_release_date_desc" />
 
         <ImageView
             android:id="@+id/iv_rating_1"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="36dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="-1dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_overview"
+            android:layout_width="@dimen/rating_image_view_size"
+            android:layout_height="@dimen/rating_image_view_size"
+            android:layout_marginLeft="@dimen/detail_view_margin"
+            android:layout_marginStart="@dimen/detail_view_margin"
+            android:layout_marginTop="@dimen/detail_view_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_user_rating_desc"
             app:layout_constraintStart_toEndOf="@+id/tv_user_rating_desc"
             app:layout_constraintTop_toTopOf="@+id/tv_user_rating_desc"
+            app:layout_constraintVertical_bias="1.0"
             tools:src="@drawable/ic_display_user_rating_full" />
 
         <ImageView
             android:id="@+id/iv_rating_2"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="36dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginStart="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_overview"
+            android:layout_width="@dimen/rating_image_view_size"
+            android:layout_height="@dimen/rating_image_view_size"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rating_1"
             app:layout_constraintStart_toEndOf="@+id/iv_rating_1"
-            app:layout_constraintTop_toTopOf="@+id/tv_user_rating_desc"
+            app:layout_constraintTop_toTopOf="@+id/iv_rating_1"
             tools:src="@drawable/ic_display_user_rating_full" />
 
         <ImageView
             android:id="@+id/iv_rating_3"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="36dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginStart="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_overview"
+            android:layout_width="@dimen/rating_image_view_size"
+            android:layout_height="@dimen/rating_image_view_size"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rating_2"
             app:layout_constraintStart_toEndOf="@+id/iv_rating_2"
-            app:layout_constraintTop_toTopOf="@+id/tv_user_rating_desc"
+            app:layout_constraintTop_toTopOf="@+id/iv_rating_2"
             tools:src="@drawable/ic_display_user_rating_full" />
 
         <ImageView
             android:id="@+id/iv_rating_4"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="36dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginStart="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_overview"
+            android:layout_width="@dimen/rating_image_view_size"
+            android:layout_height="@dimen/rating_image_view_size"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rating_3"
             app:layout_constraintStart_toEndOf="@+id/iv_rating_3"
-            app:layout_constraintTop_toTopOf="@+id/tv_user_rating_desc"
+            app:layout_constraintTop_toTopOf="@+id/iv_rating_3"
             tools:src="@drawable/ic_display_user_rating_full" />
 
         <ImageView
             android:id="@+id/iv_rating_5"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="36dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginStart="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_overview"
+            android:layout_width="@dimen/rating_image_view_size"
+            android:layout_height="@dimen/rating_image_view_size"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rating_4"
             app:layout_constraintStart_toEndOf="@+id/iv_rating_4"
-            app:layout_constraintTop_toTopOf="@+id/tv_user_rating_desc"
+            app:layout_constraintTop_toTopOf="@+id/iv_rating_4"
             tools:src="@drawable/ic_display_user_rating_full" />
 
         <TextView
             android:id="@+id/tv_overview_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/detail_view_margin"
             android:text="@string/desc_overview"
             android:textColor="@color/colorText"
-            android:textSize="14sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_release_date_desc"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_rating_desc" />
 
         <TextView
             android:id="@+id/tv_overview"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/detail_view_margin"
             android:textColor="@color/colorText"
-            android:textSize="14sp"
+            android:textSize="@dimen/standard_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_release_date_desc"
             app:layout_constraintTop_toBottomOf="@+id/tv_overview_desc"
             tools:text="Two monsters scare children to make ends meet." />

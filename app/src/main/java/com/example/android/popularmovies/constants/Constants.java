@@ -5,13 +5,13 @@ public class Constants {
     /**
      * API_KEY --- ADD API KEY HERE
      */
-    public final static String KEY_API = "";
+    public final static String KEY_API = "d8430e3261062784080881e4e9c64d98";
 
     /**
      * URL COMPONENTS
      */
     public final static String URL_BASE_MOVIE_DB = "https://api.themoviedb.org/3/movie/";
-    public final static String URL_BASE_MOVIE_DB_IMAGE = "http://image.tmdb.org/t/p/w342/";
+    public final static String URL_BASE_MOVIE_DB_IMAGE = "http://image.tmdb.org/t/p/w500/";
     public final static String URL_BASE_MOVIE_DB_IMAGE_LARGE = "http://image.tmdb.org/t/p/w780/";
     public final static String URL_BASE_YOUTUBE = "http://www.youtube.com/watch?v=";
     public final static String URL_ENDPOINT_TRAILERS = "/videos";

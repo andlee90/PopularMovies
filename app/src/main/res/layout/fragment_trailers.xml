@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp">
+    android:paddingTop="@dimen/detail_padding_top">
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/colorText"
-        android:dividerHeight="1dp"/>
+        android:dividerHeight="@dimen/detail_list_item_divider_height"/>
 
     <RelativeLayout
         android:id="@android:id/empty"
@@ -31,6 +31,7 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:visibility="invisible"
-            android:text="@string/empty_text_trailers" />
+            android:text="@string/empty_text_trailers"
+            android:textSize="@dimen/standard_text_size"/>
     </RelativeLayout>
 </RelativeLayout>

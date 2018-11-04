@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements PosterGridAdapter
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, spanCount);
 
         mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setItemViewCacheSize(500);
         mRecyclerView.setEmptyView(mResponse);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         mEndlessScrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager) {

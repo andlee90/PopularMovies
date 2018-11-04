@@ -61,13 +61,13 @@ public class DetailActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        ImageView iv = findViewById(R.id.iv_poster);
+        ImageView iv = findViewById(R.id.iv_movie_poster);
         Picasso.get().load(URL_BASE_MOVIE_DB_IMAGE_LARGE + mMovie.getPosterPath())
                 .error(R.drawable.ic_display_broken_image)
                 .fit()
                 .into(iv);
 
-        mDetailsFrame = findViewById(R.id.fl_details);
+        mDetailsFrame = findViewById(R.id.fl_details_display);
 
         mFavoriteImageView = findViewById(R.id.iv_favorite);
         mFavoriteImageView.setImageResource(R.drawable.ic_action_favorite_off);

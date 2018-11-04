@@ -45,6 +45,7 @@
     <!-- Content Descriptions -->
     <string name="movie_poster_image_content_desc">Movie Poster</string>
     <string name="review_author_icon_content_desc">Movie Review Author</string>
+    <string name="favorite_icon_content_desc">Toggle Favorite</string>
     <string name="play_trailer_icon_content_desc">Play Trailer</string>
     <string name="share_trailer_icon_content_desc">Share Trailer</string>
 

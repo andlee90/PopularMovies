@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="@dimen/detail_trailer_list_item_height"
+    android:theme="@android:style/ThemeOverlay.Material.Dark">
 
     <RelativeLayout
         android:id="@+id/rv_play"
@@ -14,8 +15,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp">
+        android:layout_marginStart="@dimen/detail_view_margin"
+        android:layout_marginLeft="@dimen/detail_view_margin"
+        android:background="?android:attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/iv_play"
@@ -31,28 +33,30 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/iv_play"
             android:layout_toRightOf="@+id/iv_play"
-            android:paddingLeft="12dp"
-            android:paddingStart="12dp"
-            android:paddingRight="12dp"
-            android:paddingEnd="12dp"
+            android:paddingLeft="@dimen/detail_view_text_padding"
+            android:paddingStart="@dimen/detail_view_text_padding"
+            android:paddingRight="@dimen/detail_view_text_padding"
+            android:paddingEnd="@dimen/detail_view_text_padding"
             android:layout_centerVertical="true"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@color/colorText"
+            android:textSize="@dimen/standard_text_size"
             tools:text="trailer" />
     </RelativeLayout>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/iv_share"
         android:contentDescription="@string/share_trailer_icon_content_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="@dimen/detail_view_margin"
+        android:layout_marginRight="@dimen/detail_view_margin"
         android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_action_share"/>
+        android:layout_marginStart="@dimen/detail_view_margin"
+        android:layout_marginLeft="@dimen/detail_view_margin"
+        android:src="@drawable/ic_action_share"
+        android:background="?attr/selectableItemBackgroundBorderless" />
 </RelativeLayout>
